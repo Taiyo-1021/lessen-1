@@ -125,6 +125,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0d1b2a;overflow:hidden;
 .q-opt{border-radius:8px;padding:7px 16px;font-size:clamp(12px,1.5vw,16px);font-weight:700;border:2px solid #ddd;background:#f7f7f7;color:#333;cursor:default}
 .think-banner{background:rgba(255,179,0,.12);border:1.5px solid rgba(255,179,0,.35);border-radius:12px;padding:12px 20px;text-align:center;font-size:clamp(13px,1.5vw,17px);color:#7a5500;font-weight:600;flex-shrink:0}
 
+.q-reveal-btn{align-self:flex-start;background:#5f3a1e;color:#fff;border:none;border-radius:8px;padding:5px 14px;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s;margin-top:4px}
+.q-reveal-btn:hover{background:#3a1e0a}
+.q-ans-reveal{display:none;background:#f0fff4;border-radius:8px;padding:10px 14px;margin-top:6px}
+.q-ans-reveal.open{display:block}
+
 /* ── QUIZ A ── */
 .quiza-slide{background:#f0fff4;flex-direction:column}
 .qa-box{background:#fff;border-radius:13px;padding:15px 20px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
@@ -514,32 +519,26 @@ function feedbackHTML(){
 }
 
 function quizQHTML(){
-  const qs=QUIZ.map((q,i)=>`
-    <div class="q-box">
+  const qs=QUIZ.map((q,i)=>{
+    const id=`qrev-${i}`;
+    const opts=q.opts.map(o=>`<div class="q-opt">${o}</div>`).join('');
+    const revealOpts=q.opts.map((o,ci)=>`<div class="qa-opt${ci===q.ans?' correct':''}">${o}</div>`).join('');
+    return `<div class="q-box">
       <div class="q-num">Question ${i+1} of ${QUIZ.length}</div>
       <div class="q-text">${q.q}</div>
-      <div class="q-opts">${q.opts.map(o=>`<div class="q-opt">${o}</div>`).join('')}</div>
-    </div>`).join('');
+      <div class="q-opts">${opts}</div>
+      <button class="q-reveal-btn" onclick="toggleAns(this,'${id}')">Show Answer</button>
+      <div class="q-ans-reveal" id="${id}">
+        <div class="q-opts" style="margin-bottom:7px">${revealOpts}</div>
+        <div class="qa-hint">💡 ${q.hint}</div>
+      </div>
+    </div>`;
+  }).join('');
   return `<div class="slide quizq-slide">
-  <div class="s-head" style="background:#5f3a1e">Mini Quiz — Questions <span class="badge" style="background:rgba(255,255,255,.14)">Think first!</span></div>
-  <div class="s-body" style="flex-direction:column;justify-content:space-evenly;gap:10px">
-    <div class="think-banner">🤔 Read each question — think about your answer before the next slide!</div>
-    <div class="q-grid">${qs}</div>
-  </div></div>`;
-}
-
-function quizAHTML(){
-  const qs=QUIZ.map((q,i)=>`
-    <div class="qa-box">
-      <div class="q-num">Question ${i+1} — Answer</div>
-      <div class="q-text" style="margin-bottom:8px">${q.q}</div>
-      <div class="q-opts" style="margin-bottom:7px">${q.opts.map((o,ci)=>`<div class="qa-opt${ci===q.ans?' correct':''}">${o}</div>`).join('')}</div>
-      <div class="qa-hint">💡 ${q.hint}</div>
-    </div>`).join('');
-  return `<div class="slide quiza-slide">
-  <div class="s-head" style="background:#1e5f3a">Mini Quiz — Answers <span class="badge" style="background:rgba(255,255,255,.14)">How did you do?</span></div>
-  <div class="s-body" style="flex-direction:column;justify-content:space-evenly;gap:10px">
-    <div class="q-grid">${qs}</div>
+  <div class="s-head" style="background:#5f3a1e">Mini Quiz <span class="badge" style="background:rgba(255,255,255,.14)">Think first!</span></div>
+  <div class="s-body" style="flex-direction:column;gap:10px;overflow-y:auto">
+    <div class="think-banner">🤔 Think about your answer, then press "Show Answer" to check!</div>
+    <div class="q-grid" style="padding-bottom:8px">${qs}</div>
   </div></div>`;
 }
 
@@ -597,8 +596,14 @@ function build(){
   const c=document.getElementById('slides');
   let h=titleHTML()+overviewHTML();
   PH.forEach((p,i)=>{h+=explainHTML(p,i+1);h+=drillHTML(p,i+1);});
-  h+=stdDrillHTML()+feedbackHTML()+quizQHTML()+quizAHTML()+summaryHTML()+freeConvHTML();
+  h+=stdDrillHTML()+feedbackHTML()+quizQHTML()+summaryHTML()+freeConvHTML();
   c.innerHTML=h;
+}
+
+function toggleAns(btn,id){
+  const el=document.getElementById(id);
+  const open=el.classList.toggle('open');
+  btn.textContent=open?'Hide':'Show Answer';
 }
 
 let cur=0,SL=[];
