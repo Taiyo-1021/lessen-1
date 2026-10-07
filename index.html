@@ -234,7 +234,7 @@ const PH = [
     name:'Short Low Back Vowel',
     desc:'Lips rounded and open wide, jaw drops down, tongue low and back — a short open "o".',
     howto:['Open your mouth wide — like saying "ah" at the dentist','Round your lips into a loose "O" shape','Let your tongue drop low and pull slightly toward the back'],
-    tip:'This is British English\'s short "o". Round lips + wide jaw — both are essential.',
+    tip:'Round lips + wide jaw — both are essential for this sound.',
     approx:'Like ア with rounded lips — or a short, wide version of オ',
     context:'Common spellings: <b>o</b> (hot, dog, top), <b>a</b> in BrE (wash, want)',
     ex:[{w:'hot',p:'/hɒt/'},{w:'dog',p:'/dɒg/'},{w:'top',p:'/tɒp/'},{w:'want',p:'/wɒnt/'},{w:'cough',p:'/kɒf/'}],
@@ -338,9 +338,9 @@ function titleHTML(){
   <div style="max-width:800px;padding:18px">
     <div style="font-size:clamp(11px,1.3vw,14px);color:#4fc3f7;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px">English Pronunciation Lesson</div>
     <h1><em>Short</em> Vowels（短母音）</h1>
-    <p class="title-sub">Master the 7 essential short vowel sounds of British English</p>
+    <p class="title-sub">Master the 7 essential short vowel sounds of English</p>
     <div class="goal-box">
-      <p>🎯 <strong>Today's Goal:</strong> Understand and produce all 7 short vowel（母音）sounds correctly</p>
+      <p>🎯 <strong>Today's Goal:</strong> Understand and produce all 7 short vowel sounds correctly</p>
       <p style="margin-top:4px">⏱ 45 minutes &nbsp;·&nbsp; 22 slides &nbsp;·&nbsp; Use ◀ ▶ or arrow keys to navigate</p>
     </div>
     <div class="sym-strip">${PH.map(p=>`<div class="sc">${p.disp}</div>`).join('')}</div>
@@ -470,44 +470,43 @@ function stdDrillHTML(){
 
 function feedbackHTML(){
   return `<div class="slide fb-slide">
-  <div class="s-head" style="background:#3a1e5f">Feedback Guide — Common Student Errors <span class="badge" style="background:rgba(255,255,255,.14)">Teacher Reference</span></div>
-  <div class="s-body" style="flex-direction:column;gap:11px">
+  <div class="s-head" style="background:#3a1e5f">Watch Out! — 3 Sounds Japanese Speakers Find Tricky <span class="badge" style="background:rgba(255,255,255,.14)">Common Mistakes</span></div>
+  <div class="s-body" style="flex-direction:column;gap:11px;overflow-y:auto">
     <div class="fb-grid">
       <div class="fb-card">
-        <h3 style="color:#D45F45">⚠️ /æ/ — Most common mistakes</h3>
+        <h3 style="color:#D45F45">⚠️ /æ/ — Jaw not low enough</h3>
         <ul class="fb-list">
-          <li>Jaw not open wide enough → remind students: "Drop your jaw lower!"</li>
-          <li>Replacing with /e/ → compare <span class="fb-pair">bad /æ/</span> vs <span class="fb-pair">bed /e/</span></li>
-          <li>Replacing with /ʌ/ → compare <span class="fb-pair">cat /æ/</span> vs <span class="fb-pair">cut /ʌ/</span></li>
-          <li>Tip: Have students put fingers under their chin — they should feel it move down</li>
+          <li>This sound needs a much wider jaw than feels natural</li>
+          <li>Put your fingers under your chin — you should feel it move <strong>down</strong> when you say it</li>
+          <li>Confusing with /e/? → say <span class="fb-pair">bad /æ/</span> vs <span class="fb-pair">bed /e/</span> — jaw drops much lower for /æ/</li>
+          <li>Confusing with /ʌ/? → say <span class="fb-pair">cat /æ/</span> vs <span class="fb-pair">cut /ʌ/</span> — /æ/ lips spread wide, /ʌ/ lips neutral</li>
         </ul>
       </div>
       <div class="fb-card">
-        <h3 style="color:#B44FAF">⚠️ /ʊ/ — Most common mistakes</h3>
+        <h3 style="color:#B44FAF">⚠️ /ʊ/ — Lips not rounded</h3>
         <ul class="fb-list">
-          <li>Using flat lips like Japanese ウ → remind: "Round your lips slightly"</li>
-          <li>Replacing with /uː/ → compare <span class="fb-pair">book /ʊ/</span> vs <span class="fb-pair">boot /uː/</span></li>
-          <li>Making it too long → it's a SHORT, quick sound</li>
-          <li>Tip: Ask students to make an "oo" shape, then relax it halfway</li>
+          <li>Japanese ウ has flat lips — /ʊ/ needs a gentle lip round</li>
+          <li>Try: make an "oo" shape, then relax it halfway — that's /ʊ/</li>
+          <li>Confusing with /uː/? → say <span class="fb-pair">book /ʊ/</span> vs <span class="fb-pair">boot /uː/</span> — /ʊ/ is shorter and more relaxed</li>
+          <li>/ʊ/ is a SHORT sound — don't hold it</li>
         </ul>
       </div>
       <div class="fb-card">
-        <h3 style="color:#2E9999">⚠️ /ə/ Schwa（シュワー）— Most common mistakes</h3>
+        <h3 style="color:#2E9999">⚠️ /ə/ Schwa — Don't stress it!</h3>
         <ul class="fb-list">
-          <li>Stressing the schwa — it must be quick and weak (never the main beat)</li>
-          <li>In "about": students often say "AH-bout" → should be "uh-BOUT"</li>
-          <li>In "teacher": students often say "TEACH-ER" with full vowel → "TEACH-ər"</li>
-          <li>Tip: Have students whisper the word — the schwa almost disappears</li>
+          <li>Schwa only appears in <strong>unstressed</strong> syllables — it's always the quiet, weak beat</li>
+          <li>"about" → uh-BOUT (not AH-bout)</li>
+          <li>"teacher" → TEACH-ər (the final syllable almost disappears)</li>
+          <li>Try whispering the word — the schwa almost vanishes. That's correct!</li>
         </ul>
       </div>
       <div class="fb-card">
-        <h3 style="color:#3D7CC9">✅ Positive feedback phrases</h3>
+        <h3 style="color:#3D7CC9">💡 Self-check tip for all 7 sounds</h3>
         <ul class="fb-list">
-          <li>"Good — I can see your lips are spread wide!"</li>
-          <li>"That's it! Your jaw dropped much lower that time."</li>
-          <li>"Almost — try relaxing your lips a little more for that sound."</li>
-          <li>"Listen to the difference: <em>bit</em> vs <em>beat</em> — can you hear it?"</li>
-          <li>"Your mouth shape was perfect — now try it in the word."</li>
+          <li>Use a mirror — check your lip shape and jaw position every time</li>
+          <li>Record yourself and compare to a native speaker's pronunciation</li>
+          <li>Focus on one sound at a time — don't try to fix everything at once</li>
+          <li>Minimal pairs are your best friend: <span class="fb-pair">bit / beat</span>, <span class="fb-pair">bad / bed</span>, <span class="fb-pair">book / boot</span></li>
         </ul>
       </div>
     </div>
